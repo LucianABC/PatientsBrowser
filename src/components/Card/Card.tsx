@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button } from 'components';
+import { Button, Modal } from 'components';
 import { PlusFilled } from 'assets/svgs';
 import { Patient } from 'types/Patient';
 import styles from './Card.module.css';
@@ -13,22 +13,14 @@ const Card: React.FC<Props> = ({ patient }) => {
   const [modal, setModal] = useState<'Edit' | 'Add' | 'Delete' | undefined>();
 
   const handleEdit = () => {
-    // Open Edit modal
-
-    console.log('Edit');
-
     setModal('Edit');
   };
 
   const handleAdd = () => {
-    // Open Edit modal
-    console.log('Add');
     setModal('Add');
   };
 
   const handleDelete = () => {
-    // Open Edit modal
-    console.log('Delete');
     setModal('Delete');
   };
 
@@ -36,6 +28,10 @@ const Card: React.FC<Props> = ({ patient }) => {
     setModal(undefined);
   };
 
+  const handleSubmitDelete = () => {
+    // Delete
+    handleCloseModal();
+  };
   const addNewPatientCard = (
     <div className={styles.AddCard}>
       <h3 style={{ color: '#1e3fae' }}>Add New Patient</h3>
@@ -90,7 +86,16 @@ const Card: React.FC<Props> = ({ patient }) => {
       {modal && modal !== 'Delete' && (
         <EditAddModal modalType={modal} patient={patient} handleClose={handleCloseModal} />
       )}
-      {modal === 'Delete' && <></>}
+      {modal === 'Delete' && (
+        <Modal
+          isOpen
+          title='Delete Patient'
+          primaryButton={{ text: 'Delete', action: handleSubmitDelete }}
+          secondaryButton={{ text: 'Cancel', action: handleCloseModal }}
+        >
+          <>Are you sure you want to delete this patient?</>
+        </Modal>
+      )}
     </>
   );
 };
