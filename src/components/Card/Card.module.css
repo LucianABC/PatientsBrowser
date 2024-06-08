@@ -4,13 +4,47 @@
   box-sizing: border-box;
   border-radius: 0 0 2rem 0;
   color: var(--primary--techie-grey--800);
-  cursor: pointer;
+  
   height: 150px;
   margin-bottom: 1rem;
   position: relative;
-  transition: 0.5s;
+  transition: 0.3s;
   width: 250px;
   word-break: break-word;
+}
+
+.Card:hover {
+  transition: 0.5s;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  border-radius: 0;
+}
+
+.Card:hover .Open {
+  bottom: 33px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  height: 200px;
+  padding: 0.5rem 0.25rem 0.5rem 1rem;
+  transform: translateY(195px);
+  transition: 0.3s;
+  width: 350px;
+  z-index: 1;
+
+  footer {
+    padding: 7px 35px;
+  }
+}
+
+.Card:hover .Closed {
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+  position: absolute;
+  height: 150px;
+  width: 350px;
+  z-index: 1;
+}
+
+.Card:hover .OpenContent {
+  display: block;
+  transition: 0.3s;
 }
 
 .Closed {
@@ -21,42 +55,12 @@
   justify-content: space-between;
   padding: 0.5rem;
   transition: 0.3s;
-  width: 100%;  
+  width: 100%;
   img {
     border-radius: 10px 0 0 0;
     width: 100px;
     height: 100px;
   }
-}
-
-.Card:hover {
-  transition: 0.5s;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  border-radius: 0;
-
-}
-
-.Card:hover .Open {
-  bottom: 33px;
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  height: 200px;
-  width: 350px;
-  padding: 1rem;
-  transform: translateY(195px);
-  transition: 0.3s;
-  z-index: 1;
-}
-
-.Card:hover .Closed {  
-  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-  position: absolute;
-  z-index: 1;  
-  width: 350px;
-}
-
-.Card:hover .OpenContent{
-  display: block;
-  transition: 0.3s;
 }
 
 .Open {
@@ -68,11 +72,15 @@
   flex-direction: column;
   height: 40px;
   justify-content: space-between;
- 
   padding: 0 0.5rem 0.5rem 0.5rem;
   position: absolute;
   transition: 0.3s;
   width: 250px;
+  footer {
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 4px 35px;
+  }
 }
 
 .OpenContent {
@@ -80,11 +88,12 @@
   overflow: auto;
   text-align: justify;
   transition: 0.3s;
+  padding-bottom: 7px;
+  a {
+    font-size: 0.75rem;
+  }
 }
 
 .CardTitle {
   max-width: 50%;
-}
-
-.CardInfo {
 }

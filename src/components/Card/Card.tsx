@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from 'components';
 import styles from './Card.module.css';
 
 interface Patient {
@@ -16,6 +17,28 @@ interface Props {
 
 const Card: React.FC<Props> = ({ patient }) => {
   const addNewPatientCard = <div>Add New Patient</div>;
+  const [modal, setModal] = useState<{ type: 'Edit' | 'Add' | 'Delete'; selectedPatient: Patient } | undefined>();
+
+  const handleEdit = () => {
+    // Open Edit modal
+
+    console.log('Edit');
+  };
+
+  const handleAdd = () => {
+    // Open Edit modal
+
+    console.log('Add');
+  };
+
+  const handleDelete = () => {
+    // Open Edit modal
+    console.log('Delete');
+  };
+
+  const handleCloseModal = () => {
+    setModal(undefined);
+  };
 
   return (
     <div className={styles.Card}>
@@ -39,15 +62,18 @@ const Card: React.FC<Props> = ({ patient }) => {
               </div>
               <div>
                 <h6>Created at:</h6>
-                <p>{patient.createdAt}</p>
+                <p>{new Date(patient.createdAt).toDateString()}</p>
               </div>
               <div>
                 <h6>Links:</h6>
-                <p>{patient.website}</p>
+                <Button variant='text'>{patient.website}</Button>
               </div>
             </div>
             <footer>
-              <a>Edit</a> <a>Delete</a>
+              <Button variant='filled' onClick={handleEdit}>
+                Edit
+              </Button>{' '}
+              <Button variant='outlined' onClick={handleDelete}>Delete</Button>
             </footer>
           </div>
         </>
