@@ -6,7 +6,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  position: absolute;
+  position: fixed;
 }
 
 .Container {
@@ -17,7 +17,7 @@
   transform: translate(-50%, -50%);
 }
 
-.Content {
+.Wrapper {
   background: white;
   border-radius: 16px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
@@ -26,14 +26,16 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 170px;
-  min-width: 450px;
+  min-width: 250px;
   z-index: 180;
+  overflow: hidden;
 
   header {
     align-items: center;
     box-sizing: border-box;
     display: inline-flex;
     justify-content: space-between;
+    color: var(--complementary--blue--800);
     padding:10px 20px;
     width: 100%;
     svg {
@@ -52,4 +54,11 @@
   footer :last-child {
     margin-left: 5px;
   }
+}
+
+
+.Content {
+  box-sizing: border-box;
+  padding: 15px 25px 25px 25px;
+  
 }

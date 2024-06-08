@@ -22,12 +22,12 @@ const Modal: React.FC<Props> = ({ isOpen, title, onClose, primaryButton, seconda
     <>
       <div className={styles.Overlay} onClick={onClose} />
       <div className={styles.Container}>
-        <div className={styles.Content}>
+        <div className={styles.Wrapper}>
           <header>
             <h3>{title}</h3>
             <Times width='10px' height='10px' onClick={onClose} />
           </header>
-          <div> {children}</div>
+          <div className={styles.Content}> {children}</div>
           <footer>
             <Button variant='filled' disabled={primaryButton.disabled} onClick={primaryButton.action}>
               {primaryButton.text}

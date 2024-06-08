@@ -3,30 +3,33 @@ import { Button } from 'components';
 import { PlusFilled } from 'assets/svgs';
 import { Patient } from 'types/Patient';
 import styles from './Card.module.css';
-import EditAddModal from './EditAddModal';
+import EditAddModal from './EditAddModal/EditAddModal';
 
 interface Props {
   patient?: Patient;
 }
 
 const Card: React.FC<Props> = ({ patient }) => {
-  const [modal, setModal] = useState<{ type: 'Edit' | 'Add' | 'Delete'; selectedPatient?: Patient } | undefined>();
+  const [modal, setModal] = useState<'Edit' | 'Add' | 'Delete' | undefined>();
 
   const handleEdit = () => {
     // Open Edit modal
 
     console.log('Edit');
+
+    setModal('Edit');
   };
 
   const handleAdd = () => {
     // Open Edit modal
     console.log('Add');
-    setModal({ type: 'Add', selectedPatient: undefined });
+    setModal('Add');
   };
 
   const handleDelete = () => {
     // Open Edit modal
     console.log('Delete');
+    setModal('Delete');
   };
 
   const handleCloseModal = () => {
@@ -84,10 +87,10 @@ const Card: React.FC<Props> = ({ patient }) => {
           </>
         )}
       </div>
-      {modal?.type && modal?.type !== 'Delete' && (
-        <EditAddModal modalType={modal?.type} patient={modal?.selectedPatient} handleClose={handleCloseModal} />
+      {modal && modal !== 'Delete' && (
+        <EditAddModal modalType={modal} patient={patient} handleClose={handleCloseModal} />
       )}
-      {modal?.type && modal?.type === 'Delete' && <></>}
+      {modal === 'Delete' && <></>}
     </>
   );
 };
