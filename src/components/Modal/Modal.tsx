@@ -1,16 +1,47 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
+import { Times } from 'assets/svgs';
+import { Button } from 'components';
+import styles from './Modal.module.css';
 
-type Props = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'children'> & {
-  variant: 'outlined' | 'filled' | 'text';
-  children: string;
-};
+interface ModalButton {
+  text: string;
+  action: (e?: any) => any;
+  disabled?: boolean;
+}
 
-const Modal: React.FC<Props> = ({ variant, children, ...props }) => {
-  return (
-    <button {...props} >
-      {children}
-    </button>
-  );
+interface Props extends HTMLAttributes<HTMLElement> {
+  isOpen?: boolean;
+  title?: string;
+  onClose?: () => void;
+  primaryButton: ModalButton;
+  secondaryButton?: ModalButton;
+}
+
+const Modal: React.FC<Props> = ({ isOpen, title, onClose, primaryButton, secondaryButton, children }) => {
+  return isOpen ? (
+    <>
+      <div className={styles.Overlay} onClick={onClose} />
+      <div className={styles.Container}>
+        <div className={styles.Content}>
+          <header>
+            <h3>{title}</h3>
+            <Times width='10px' height='10px' onClick={onClose} />
+          </header>
+          <div> {children}</div>
+          <footer>
+            <Button variant='filled' disabled={primaryButton.disabled} onClick={primaryButton.action}>
+              {primaryButton.text}
+            </Button>
+            {secondaryButton && (
+              <Button variant='outlined' disabled={secondaryButton.disabled} onClick={secondaryButton.action}>
+                {secondaryButton.text}
+              </Button>
+            )}
+          </footer>
+        </div>
+      </div>
+    </>
+  ) : null;
 };
 
 export default Modal;

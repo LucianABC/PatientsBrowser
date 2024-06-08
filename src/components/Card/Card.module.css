@@ -1,22 +1,21 @@
+
 .Card {
   background-color: var(--light-grey);
   box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
   border-radius: 0 0 2rem 0;
-  color: var(--primary--techie-grey--800);
-  
-  height: 150px;
+  color: var(--primary--techie-grey--800);  
+  height: 200px;
   margin-bottom: 1rem;
   position: relative;
   transition: 0.3s;
-  width: 250px;
+  width: 300px;
   word-break: break-word;
 }
 
 .Card:hover {
-  transition: 0.5s;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-  border-radius: 0;
+  transition: 0.3s;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75); 
 }
 
 .Card:hover .Open {
@@ -26,9 +25,9 @@
   padding: 0.5rem 0.25rem 0.5rem 1rem;
   transform: translateY(195px);
   transition: 0.3s;
+  height: 250px;
   width: 350px;
   z-index: 1;
-
   footer {
     padding: 7px 35px;
   }
@@ -37,14 +36,14 @@
 .Card:hover .Closed {
   box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
   position: absolute;
-  height: 150px;
+  height: 180px;
+  transition: 0.3s;
   width: 350px;
   z-index: 1;
 }
 
 .Card:hover .OpenContent {
   display: block;
-  transition: 0.3s;
 }
 
 .Closed {
@@ -52,10 +51,11 @@
   background-color: var(--light-grey);
   box-sizing: border-box;
   display: flex;
+  height: 150px;
   justify-content: space-between;
   padding: 0.5rem;
   transition: 0.3s;
-  width: 100%;
+  width: 300px;
   img {
     border-radius: 10px 0 0 0;
     width: 100px;
@@ -70,12 +70,13 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  height: 40px;
-  justify-content: space-between;
+  height: 92px;
+  justify-content: flex-end;
   padding: 0 0.5rem 0.5rem 0.5rem;
   position: absolute;
   transition: 0.3s;
-  width: 250px;
+  width: 300px;
+  z-index: 0;
   footer {
     display: inline-flex;
     justify-content: space-between;
@@ -88,6 +89,7 @@
   overflow: auto;
   text-align: justify;
   transition: 0.3s;
+  height: 100%;
   padding-bottom: 7px;
   a {
     font-size: 0.75rem;
@@ -96,4 +98,25 @@
 
 .CardTitle {
   max-width: 50%;
+}
+
+.AddCard {
+  align-items: center;
+  background-color: var(--light-grey);
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border-radius: 0 0 2rem 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 0.3s;
+  
+}
+
+.Card:hover .AddCard {
+  height: 105%;
+  width: 105%;
+  transition: 0.3s;
 }
