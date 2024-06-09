@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'components';
 import { PlusFilled } from 'assets/svgs';
 import { Patient } from 'types/Patient';
+import { usePatients } from 'hooks/usePatients';
 import styles from './Card.module.css';
 import EditAddModal from './EditAddModal/EditAddModal';
 
@@ -10,6 +11,7 @@ interface Props {
 }
 
 const Card: React.FC<Props> = ({ patient }) => {
+  const { deletePatient } = usePatients();
   const [modal, setModal] = useState<'Edit' | 'Add' | 'Delete' | undefined>();
 
   const handleEdit = () => {
@@ -28,10 +30,14 @@ const Card: React.FC<Props> = ({ patient }) => {
     setModal(undefined);
   };
 
-  const handleSubmitDelete = () => {
+  const handleSubmitDelete = async () => {
     // Delete
-    handleCloseModal();
+    if (patient?.id) {
+      await deletePatient(patient?.id);
+      handleCloseModal();
+    }
   };
+
   const addNewPatientCard = (
     <div className={styles.AddCard}>
       <h3 style={{ color: '#1e3fae' }}>Add New Patient</h3>

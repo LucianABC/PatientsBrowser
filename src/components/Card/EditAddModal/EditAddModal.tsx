@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, TextField } from 'components';
 import { Patient } from 'types/Patient';
+import { usePatients } from 'hooks/usePatients';
 import styles from './EditAddModal.module.css';
 
 interface Props {
@@ -10,6 +11,8 @@ interface Props {
 }
 
 const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
+  const { addNewPatient, editPatient } = usePatients();
+
   const [fieldValues, setFieldValues] = useState<{
     name?: string;
     description?: string;
@@ -19,16 +22,34 @@ const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
     name: patient?.name,
     description: patient?.description,
     website: patient?.website,
-    avatar: patient?.avatar,
+    avatar: patient?.avatar ?? 'fakeavatar',
   });
 
-  const handleEdit = () => {
+  const handleEdit = async () => {
     // Submit Edit
+    if (patient?.id) {
+      await editPatient(patient?.id, {
+        name: fieldValues.name ?? '',
+        description: fieldValues.description ?? '',
+        website: fieldValues.website ?? '',
+        createdAt: new Date().toDateString(),
+        id: patient?.id,
+        avatar: fieldValues.avatar ?? '',
+      });
+    }
     handleClose();
   };
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     // Submit Add
+    await addNewPatient({
+      name: fieldValues.name ?? '',
+      description: fieldValues.description ?? '',
+      website: fieldValues.website ?? '',
+      createdAt: new Date().toDateString(),
+      id: Math.random().toString(),
+      avatar: fieldValues.avatar ?? '',
+    });
     handleClose();
   };
 
