@@ -1,6 +1,6 @@
 # My Patients Browser
 
-This is a mock app to browser patients
+This is a mock app to browse patients
 
 ## To run the app
 
@@ -23,11 +23,16 @@ To me, there's no chance to go back to plain ReactJS after using TypeScript. If 
 
 ### Zustand (state manager)
 
-I used this library to manage the patients fetched from the API in a local store that can be accessed anywhere in the code. I update this state via a hook (*usePatients*) where I  fetched the patients on mount and trigger side effects when updating patients (refetching data so the UI stays updated). I could've  used something like React Query to manage the requests but since this is a small app with just one global state I thought it was a bit of an overkill.
+I used this library to manage the patients fetched from the API in a local store that can be accessed anywhere in the code. I update this state via a hook (`usePatients`) where I  fetched the patients on mount and trigger side effects when updating patients (refetching data so the UI stays updated). I could've  used something like React Query to manage the requests but since this is a small app with just one global state I thought it was a bit of an overkill.
 
 ### CSS modules
 
-Since the challenge's acceptance criteria requested not to use UI libraries such as MaterialUI, I wanted to take it a step further and not use any styling libraries at all and use plain CSS. I like CSS modules because I find it's more readable than plain CSS, you can really see *where* the styles are applying and that makes it easier to debug if something breaks.
+Since the challenge's acceptance criteria requested not to use UI libraries such as MaterialUI, I wanted to take it a step further and not use any styling libraries at all and use plain CSS. I like CSS modules because I find it's more readable than plain CSS, you can really see *where* the styles are applying and that makes it easier to debug if something breaks. I could've used Sass but I tend to go overboard with the nesting and I wanted to avoid it and use specific classes that are easier to debug.
+
+### Notistack
+
+This is a library to quickly display notifications.
+I used it to show the success/error of the API calls.
 
 
 ## Folder structure
@@ -54,7 +59,7 @@ Color palette
 
 ### Hooks
 
-Hooks. There's only one hook being used here and it's *usePatients*. Here you can access the `patients` array globally across the app and update the patients on the API.
+Hooks. There's only one hook being used here and it's `usePatients`. Here you can access the `patients` array globally across the app and update the patients on the API.
 
 ### Services
 
