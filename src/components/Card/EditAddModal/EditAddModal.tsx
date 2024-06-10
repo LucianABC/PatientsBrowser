@@ -32,9 +32,8 @@ const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
         name: fieldValues.name ?? '',
         description: fieldValues.description ?? '',
         website: fieldValues.website ?? '',
-        createdAt: new Date().toDateString(),
         id: patient?.id,
-        avatar: fieldValues.avatar ?? '',
+        avatar: fieldValues.avatar ?? undefined,
       });
     }
     handleClose();
@@ -46,9 +45,9 @@ const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
       name: fieldValues.name ?? '',
       description: fieldValues.description ?? '',
       website: fieldValues.website ?? '',
-      createdAt: new Date().toDateString(),
       id: Math.random().toString(),
-      avatar: fieldValues.avatar ?? '',
+      // Here we should send the image but since the mock api creates an Image by it self, this is a placeholder
+      // avatar: fieldValues.avatar ?? '',
     });
     handleClose();
   };
@@ -61,9 +60,7 @@ const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
             fieldValues.description &&
             fieldValues.description !== '' &&
             fieldValues.website &&
-            fieldValues.website !== '' &&
-            fieldValues.avatar &&
-            fieldValues.avatar !== ''
+            fieldValues.website !== ''
       )
       : Boolean(
         (fieldValues.name && fieldValues.name !== patient?.name) ??

@@ -38,6 +38,7 @@
 .outlined.disabled {
   color: var(--primary--techie-grey--500);
   border-color: var(--primary--techie-grey--500);
+  cursor: default;
 }
 
 .filled {
@@ -56,4 +57,5 @@
   background-color: var(--primary--techie-grey--400);
   border: 2px solid var(--primary--techie-grey--400);
   color: var(--primary--techie-grey--050);
+  cursor: default;
 }

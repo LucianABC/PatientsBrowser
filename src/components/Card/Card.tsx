@@ -68,10 +68,12 @@ const Card: React.FC<Props> = ({ patient }) => {
                   <h6>Description:</h6>
                   <p>{patient.description}</p>
                 </div>
-                <div>
-                  <h6>Created at:</h6>
-                  <p>{new Date(patient.createdAt).toDateString()}</p>
-                </div>
+                {patient.createdAt && (
+                  <div>
+                    <h6>Created at:</h6>
+                    <p>{new Date(patient.createdAt).toDateString()}</p>
+                  </div>
+                )}
                 <div>
                   <h6>Links:</h6>
                   <Button
