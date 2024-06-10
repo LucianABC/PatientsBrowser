@@ -53,14 +53,35 @@ const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
     handleClose();
   };
 
+  const submitEnabled =
+    modalType === 'Add'
+      ? Boolean(
+        fieldValues.name &&
+            fieldValues.name !== '' &&
+            fieldValues.description &&
+            fieldValues.description !== '' &&
+            fieldValues.website &&
+            fieldValues.website !== '' &&
+            fieldValues.avatar &&
+            fieldValues.avatar !== ''
+      )
+      : Boolean(
+        (fieldValues.name && fieldValues.name !== patient?.name) ??
+            (fieldValues.description && fieldValues.description !== patient?.description) ??
+            (fieldValues.website && fieldValues.website !== patient?.website) ??
+            (fieldValues.avatar && fieldValues.avatar !== patient?.avatar)
+      );
+
   const primaryButton = {
     text: 'Submit',
     action: modalType === 'Add' ? handleAdd : handleEdit,
+    disabled: !submitEnabled,
   };
 
   const secondaryButton = {
     text: 'Cancel',
     action: handleClose,
+    disabled: false,
   };
 
   const handleChange = (e: any) => {

@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { Patient } from 'types/Patient';
-import { usePatientsStore } from 'stores/Patients';
 
 export const useGetAllPatients = async (): Promise<Patient[]> => {
   return await fetch('https://63bedcf7f5cfc0949b634fc8.mockapi.io/users')
@@ -20,6 +18,7 @@ export const useDeletePatient = async (id: string) => {
   })
     .then(async (response) => {
       const res = await response.json();
+
       return res;
     })
     .catch((error) => {
@@ -50,7 +49,7 @@ export const usePatchPatient = async (id: string, newData: Patient) => {
     });
 };
 
-export const usePostPatient = async (p: Patient): Promise<any> => {
+export const usePostPatient = async (p: Patient) => {
   // Creates
   return await fetch('https://63bedcf7f5cfc0949b634fc8.mockapi.io/users', {
     method: 'POST',

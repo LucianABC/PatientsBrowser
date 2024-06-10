@@ -74,7 +74,14 @@ const Card: React.FC<Props> = ({ patient }) => {
                 </div>
                 <div>
                   <h6>Links:</h6>
-                  <Button variant='text'>{patient.website}</Button>
+                  <Button
+                    variant='text'
+                    onClick={() => {
+                      window.open(patient.website, '_blank');
+                    }}
+                  >
+                    {patient.website}
+                  </Button>
                 </div>
               </div>
               <footer>

@@ -3,12 +3,15 @@ import styles from './Button.module.css';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: 'outlined' | 'filled' | 'text';
-
 };
 
-const Button: React.FC<Props> = ({ variant, children, ...props }) => {
+const Button: React.FC<Props> = ({ variant, children, disabled, ...props }) => {
   return (
-    <button {...props} className={`${styles.Button} ${styles[variant]}`} >
+    <button
+      {...props}
+      disabled={disabled}
+      className={`${styles.Button} ${styles[variant]} ${disabled ? styles.disabled : ''}`}
+    >
       {children}
     </button>
   );
