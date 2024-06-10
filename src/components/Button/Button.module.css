@@ -40,12 +40,6 @@
   border-color: var(--primary--techie-grey--500);
 }
 
-.outlined.disabled:hover {
-  background-color: var(--primary--techie-grey--400);
-  border: 2px solid var(--primary--techie-grey--400);
-  color: var(--primary--techie-grey--050);
-}
-
 .filled {
   background-color: var(--complementary--blue--900);
   border: 2px solid var(--complementary--blue--900);
@@ -62,11 +56,4 @@
   background-color: var(--primary--techie-grey--400);
   border: 2px solid var(--primary--techie-grey--400);
   color: var(--primary--techie-grey--050);
-}
-
-.filled.disabled:hover {
-  border: 2px solid var(--primary--techie-grey--500);
-  border-radius: 15px;
-  background-color: transparent;
-  color: var(--primary--techie-grey--500);
 }
