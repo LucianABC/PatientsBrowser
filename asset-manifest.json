@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/PatientsBrowser/static/css/main.cd7e9ef1.css",
+    "main.js": "/PatientsBrowser/static/js/main.381cf29b.js",
+    "index.html": "/PatientsBrowser/index.html",
+    "static/media/plus-outlined.svg": "/PatientsBrowser/static/media/plus-outlined.c99968fb4c4ba9a4f7274b1d39086eef.svg",
+    "static/media/plus-filled.svg": "/PatientsBrowser/static/media/plus-filled.237724aa5e14afde1149f31296b9b58f.svg",
+    "static/media/times.svg": "/PatientsBrowser/static/media/times.359021e54952399ba141cb48fb1ca831.svg",
+    "main.cd7e9ef1.css.map": "/PatientsBrowser/static/css/main.cd7e9ef1.css.map",
+    "main.381cf29b.js.map": "/PatientsBrowser/static/js/main.381cf29b.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd7e9ef1.css",
+    "static/js/main.381cf29b.js"
+  ]
+}
