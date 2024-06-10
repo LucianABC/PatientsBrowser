@@ -34,7 +34,12 @@ export const usePatchPatient = async (id: string, newData: Patient) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ ...newData }),
+    body: JSON.stringify({
+      name: newData.name,
+      description: newData.description,
+      website: newData.website,
+      avatar: newData.avatar,
+    }),
   })
     .then(async (response) => {
       const res = await response.json();

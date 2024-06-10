@@ -22,7 +22,7 @@ const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
     name: patient?.name,
     description: patient?.description,
     website: patient?.website,
-    avatar: patient?.avatar ?? 'fakeavatar',
+    avatar: patient?.avatar,
   });
 
   const handleEdit = async () => {
@@ -64,7 +64,10 @@ const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
   };
 
   const handleChange = (e: any) => {
-    console.log({ e });
+    if (e.target.name === 'avatar') {
+      // The image won't show because it need to be stored in a domain, but this is a rough example of how it should work
+      setFieldValues((prev) => ({ ...prev, [e.target.name]: URL.createObjectURL(e.target.files[0]) }));
+    }
     setFieldValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -80,7 +83,7 @@ const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
         <div className={styles.AvatarContainer}>
           {modalType === 'Edit' ? (
             <>
-              <img src={patient?.avatar} />
+              <img src={fieldValues?.avatar} />
               <span>
                 <h5>Patient ID:</h5>
                 <p>{patient?.id}</p>
@@ -88,10 +91,14 @@ const EditAddModal: React.FC<Props> = ({ modalType, handleClose, patient }) => {
             </>
           ) : (
             <>
-              <label htmlFor='avatar'>
-                <h5>Choose a profile picture:</h5>
-              </label>
-              <input type='file' id='avatar' name='avatar' accept='image/png, image/jpeg' />
+              {fieldValues.avatar !== '' ? (
+                <img src={fieldValues?.avatar} />
+              ) : (
+                <label htmlFor='avatar'>
+                  <h5>Choose a profile picture:</h5>
+                </label>
+              )}
+              <input type='file' id='avatar' name='avatar' accept='image/png, image/jpeg' onChange={handleChange} />
             </>
           )}
         </div>

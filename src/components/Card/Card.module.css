@@ -1,21 +1,26 @@
-
 .Card {
   background-color: var(--light-grey);
   box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
   border-radius: 0 0 2rem 0;
-  color: var(--primary--techie-grey--800);  
+  color: var(--primary--techie-grey--800);
   height: 200px;
   margin-bottom: 1rem;
   position: relative;
   transition: 0.3s;
-  width: 300px;
+  width: 90%;
   word-break: break-word;
+}
+
+@media (min-width: 1170px) {
+  .Card {
+    width: 100%;
+  }
 }
 
 .Card:hover {
   transition: 0.3s;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75); 
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .Card:hover .Open {
@@ -26,7 +31,7 @@
   transform: translateY(195px);
   transition: 0.3s;
   height: 250px;
-  width: 350px;
+  width: 120%;
   z-index: 1;
   footer {
     padding: 7px 35px;
@@ -38,7 +43,7 @@
   position: absolute;
   height: 180px;
   transition: 0.3s;
-  width: 350px;
+  width: 120%;
   z-index: 1;
 }
 
@@ -55,7 +60,7 @@
   justify-content: space-between;
   padding: 0.5rem;
   transition: 0.3s;
-  width: 300px;
+  width: 100%;
   img {
     border-radius: 10px 0 0 0;
     width: 100px;
@@ -75,7 +80,7 @@
   padding: 0 0.5rem 0.5rem 0.5rem;
   position: absolute;
   transition: 0.3s;
-  width: 300px;
+  width: 100%;
   z-index: 0;
   footer {
     display: inline-flex;
@@ -112,7 +117,6 @@
   flex-direction: column;
   justify-content: center;
   transition: 0.3s;
-  
 }
 
 .Card:hover .AddCard {

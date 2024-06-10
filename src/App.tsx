@@ -12,6 +12,9 @@ const App = () => {
 
   return (
     <div className={styles.App}>
+      <div className={styles.Head}>
+        <h1>My Patients Browser</h1>
+      </div>
       <div className={styles.CardContainer}>
         <Card key={0} />
         {patients?.map((p) => {
